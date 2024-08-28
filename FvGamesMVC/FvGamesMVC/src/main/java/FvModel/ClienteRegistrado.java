@@ -124,7 +124,7 @@ public class ClienteRegistrado extends Cliente {
         String sql = "INSERT INTO Cliente (Nombre, Apellidos, Cedula, Direccion, Email, Dinero, MetodoPago, Foto, NumeroTarjeta, NumeroCuentaBanco, Contrasena, TipoCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int id = -1;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "118340662");
              PreparedStatement pstmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             pstmt.setString(1, getNombre());
@@ -169,7 +169,7 @@ public class ClienteRegistrado extends Cliente {
         
        // System.out.println("Estoy en consultar cliente");
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "118340662");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, cedula);
@@ -221,7 +221,7 @@ public class ClienteRegistrado extends Cliente {
         
         //System.out.println("Estoy en consultar cliente");
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "118340662");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, cedula);
@@ -266,7 +266,7 @@ public class ClienteRegistrado extends Cliente {
         String sql = "UPDATE Cliente SET Nombre=?, Apellidos=?, Cedula=?, Direccion=?, Email=?, Dinero=?, MetodoPago=?, Contrasena=? WHERE Cedula=?";
         int id = -1;
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "SVfr2890210!");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/FVGames", "root", "118340662");
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, nombre);
