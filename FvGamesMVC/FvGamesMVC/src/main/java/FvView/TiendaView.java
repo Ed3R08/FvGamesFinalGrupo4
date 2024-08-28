@@ -21,6 +21,7 @@ public class TiendaView extends javax.swing.JFrame {
     
     GestionClientes gestionClientes;
     GestionInventario gestionInventario;
+    DefaultTableModel modeloTabla2;
     
     public TiendaView(GestionClientes clientes, GestionInventario inventario ) {
         initComponents();
@@ -32,6 +33,9 @@ public class TiendaView extends javax.swing.JFrame {
             modeloTabla.addRow(new Object[]{producto.getIdProducto(), producto.getNombre(), producto.getCategoria(), producto.getPrecio(), producto.getCantidad()});
         }        
         jTable1.setModel(modeloTabla);
+        
+        modeloTabla2 = new DefaultTableModel(new Object[]{"Id", "Nombre", "Categoria", "Precio"}, 0);
+        jTable2.setModel(modeloTabla2);
     }
 
     /**
@@ -169,7 +173,19 @@ public class TiendaView extends javax.swing.JFrame {
             id = String.valueOf(jTable1.getModel().getValueAt(i, 0));
             nombre = String.valueOf(jTable1.getModel().getValueAt(i, 1));
             gestionClientes.agregarACarrito(id, nombre);
-        }                                
+        }
+
+        int[] filasSeleccionadas = jTable1.getSelectedRows();
+        for (int i : filasSeleccionadas) {
+            // Obtener datos del producto seleccionado
+            int id = (int) jTable1.getValueAt(i, 0);
+            String nombre = (String) jTable1.getValueAt(i, 1);
+            String categoria = (String) jTable1.getValueAt(i, 2);
+            double precio = (double) jTable1.getValueAt(i, 3);
+ 
+            // Agregar producto al modelo de jTable2 (Carrito de compras)
+            modeloTabla2.addRow(new Object[]{id, nombre, categoria, precio});
+        }                             
     }//GEN-LAST:event_jButton15ActionPerformed
 
 
